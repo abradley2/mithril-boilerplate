@@ -1,11 +1,7 @@
-var HomeModel = require('../models/HomeModel.js')
+function HomeModel () {
 
-function HomeController () {
-    this.model = new HomeModel()
+    this.message = m.prop('Mithril.js')
+    
 }
 
-function HomeView () {
-    return m('div.container', [
-        
-    ])
-}
+module.exports = HomeModel
