@@ -1,12 +1,13 @@
-ar gulp = require('gulp'),
+var gulp = require('gulp'),
     browserify = require('browserify'),
     watchify = require('watchify'),
+    gutil = require('gulp-util'),
     source = require('vinyl-source-stream'),
     rename = require('gulp-rename')
 
 function watchScripts () {
 
-    var files = ['./src/main.js']
+    var files = ['./src/scripts/main.js']
 
     files.forEach(function (entry) {
         var b = browserify({
@@ -15,6 +16,8 @@ function watchScripts () {
             packageCache: {},
             plugin: [watchify]
         })
+
+        b.on('log', gutil.log)
 
         b.on('update', bundle.bind(null, b, entry) )
 
@@ -25,8 +28,8 @@ function watchScripts () {
     function bundle (b, entry) {
         b.bundle()
             .on('error', function (err) {
-                console.log(err.toString());
-                this.emit('end');
+                console.log(err.toString())
+                this.emit('end')
             })
             .pipe(source(
                 entry.match(/\w+\.js$/ig)[0]

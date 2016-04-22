@@ -1,11 +1,12 @@
 var gulp = require('gulp'),
+    gutil = require('gulp-util'),
     browserify = require('browserify'),
     source = require('vinyl-source-stream'),
     rename = require('gulp-rename')
 
 function buildScripts () {
 
-    var files = ['./src/main.js']
+    var files = ['./src/scripts/main.js']
 
 
     files.forEach(function (entry) {
@@ -24,8 +25,8 @@ function buildScripts () {
 
         b.bundle()
             .on('error', function (err) {
-                console.log(err.toString());
-                this.emit('end');
+                console.log(err.toString())
+                this.emit('end')
             })
             .pipe(source(
                 entry.match(/\w+\.js$/ig)[0]

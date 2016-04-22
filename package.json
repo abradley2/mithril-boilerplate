@@ -8,6 +8,7 @@
     "watch-scripts": "gulp watch-scripts",
     "build-styles": "gulp build-styles",
     "build-scripts": "gulp build-scripts",
+    "start": "node --harmony app.js",
     "watch": "gulp watch",
     "build": "gulp build"
   },
@@ -22,7 +23,10 @@
   },
   "homepage": "https://github.com/abradley2/mithril-boilerplate",
   "dependencies": {
-    "lodash": "^4.6.1",
+    "koa": "^1.2.0",
+    "koa-bodyparser": "^2.0.1",
+    "koa-router": "^5.4.0",
+    "koa-static": "^2.0.0",
     "mithril": "^0.2.3"
   },
   "devDependencies": {

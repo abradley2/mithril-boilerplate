@@ -1,16 +1,27 @@
-var Model = require('./models/HomeModel.js')
+var DemoModel = require('../models/DemoModel.js')
 
 function Controller () {
 
-    this.model = new Model()
+    this.model = DemoModel.fetch()
     
+    this.save = function (e) {
+        
+        this.model().message( e.target.value )
+
+        DemoModel.save( this.model() )
+        
+    }
 }
 
 function View (ctrl, args) {
 
-    return [
-        m('h5', ctrl.model.message() )
-    ]
+    return m('div', [
+        m('h5', ctrl.model().message() ),
+        m('input', {
+            value: ctrl.model().message(),
+            onchange: ctrl.save.bind(ctrl)
+        })
+    ])
 
 }
 

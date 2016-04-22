@@ -6,8 +6,12 @@ var modules = {
     Home: require('./modules/Home')
 }
 
-m.route(document.querySelector('body'), '/', {
+document.addEventListener('DOMContentLoaded', function () {
 
-    '/': Home
+    m.route(document.querySelector('body'), '/', {
+
+        '/': modules.Home
+
+    })
 
 })
