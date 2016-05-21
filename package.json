@@ -27,9 +27,7 @@
     "koa-bodyparser": "^2.0.1",
     "koa-router": "^5.4.0",
     "koa-static": "^2.0.0",
-    "lodash": "^4.11.1",
-    "mithril": "^0.2.3",
-    "ramda": "^0.21.0"
+    "mithril": "^0.2.3"
   },
   "devDependencies": {
     "browserify": "^13.0.0",

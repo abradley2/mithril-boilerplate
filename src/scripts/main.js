@@ -1,5 +1,4 @@
 window.m = require('mithril')
-window._ = require('lodash')
 
 m.route.mode = 'pathname'
 

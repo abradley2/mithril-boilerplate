@@ -1,15 +1,17 @@
-var PostModel = require('../models/PostModel.js')
 
 function Controller () {
 
-    this.model = PostModel.getLatest()
-    
+	this.model = m.request({
+        method: 'GET',
+        url: '/api/post'
+    })
+
 }
 
 function View (ctrl, args) {
 
     return m('div', [
-        m('h5', ctrl.model().title )
+        m('h3', ctrl.model().message)
     ])
 
 }
