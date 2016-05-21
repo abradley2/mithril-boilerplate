@@ -18,7 +18,7 @@ function buildScripts () {
             plugin: []
         })
 
-        bundle(b, entry)
+        bundle(b, name)
     })
 
     function bundle (b, name) {
