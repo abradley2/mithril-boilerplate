@@ -32,7 +32,7 @@ function watchScripts () {
                 this.emit('end')
             })
             .pipe(source(
-                entry.match(/\w+\.js$/ig)[0]
+                entry.match(/\w+\.\w+$/ig)[0]
             ))
             .pipe(rename({
                 extname: '.bundle.js'

@@ -1,8 +1,8 @@
 var PostModel = require('../models/PostModel.js')
 
-function Controller () {
+function Controller (id) {
 
-    this.model = PostModel.getLatest()
+    this.model = PostModel.get(id)
     
 }
 
