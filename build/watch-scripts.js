@@ -10,7 +10,9 @@ function watchScripts () {
     var files = ['./src/scripts/main.js']
 
     files.forEach(function (entry) {
-        var b = browserify({
+        
+        var name = entry.match(/\w+.\w+$/ig)[0],
+            b = browserify({
             entries: [entry],
             cache: {},
             packageCache: {},
@@ -19,21 +21,19 @@ function watchScripts () {
 
         b.on('log', gutil.log)
 
-        b.on('update', bundle.bind(null, b, entry) )
+        b.on('update', bundle.bind(null, b, name) )
 
-        bundle(b, entry)
+        bundle(b, name)
 
     })
 
-    function bundle (b, entry) {
+    function bundle (b, name) {
         b.bundle()
             .on('error', function (err) {
                 console.log(err.toString())
                 this.emit('end')
             })
-            .pipe(source(
-                entry.match(/\w+.\w+$/ig)[0]
-            ))
+            .pipe(source(name))
             .pipe(rename({
                 extname: '.bundle.js'
             }))

@@ -8,10 +8,10 @@ function buildScripts () {
 
     var files = ['./src/scripts/main.js']
 
-
     files.forEach(function (entry) {
 
-        var b = browserify({
+        var name = entry.match(/\w+.\w+$/ig)[0],
+            b = browserify({
             entries: [entry],
             cache: {},
             packageCache: {},
@@ -21,16 +21,14 @@ function buildScripts () {
         bundle(b, entry)
     })
 
-    function bundle (b, entry) {
+    function bundle (b, name) {
 
         b.bundle()
             .on('error', function (err) {
                 console.log(err.toString())
                 this.emit('end')
             })
-            .pipe(source(
-                entry.match(/\w+.\w+$/ig)[0]
-            ))
+            .pipe(source(name))
             .pipe(rename({
                 extname: '.bundle.js'
             }))
