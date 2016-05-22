@@ -3,14 +3,22 @@ window.m = require('mithril')
 m.route.mode = 'pathname'
 
 var modules = {
-    Home: require('./modules/Home')
+    Client: require('./modules/Client'),
+    Designer: require('./modules/Designer'),
+    Admin: require('./modules/Admin')
 }
 
 document.addEventListener('DOMContentLoaded', function () {
 
     m.route(document.querySelector('body'), '/', {
 
-        '/': modules.Home
+        '/': modules.Client,
+
+        '/client/:view/:id': modules.Client,
+
+        '/designer': modules.Designer,
+
+        '/admin': modules.Admin
 
     })
 
